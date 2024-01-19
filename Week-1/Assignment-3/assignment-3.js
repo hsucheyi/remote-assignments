@@ -9,32 +9,34 @@ function countAandB(input) {
         countB++;
     }
   }
-  return countA + countB;
+  return `飲料A有${countA}杯、飲料B有${countB}杯、共有${countA + countB}杯`;
 }
 
 function toNumber(input) {
-  const result = [];
-
   for (let i = 0; i < input.length; i++) {
     switch (input[i]) {
       case 'a':
-          result.push(1);
-          break;
+        input[i] = 1;
+        break;
+        
       case 'b':
-           result.push(2);
-          break;
+        input[i] = 2;
+        break;
+        
       case 'c':
-          result.push(3);
-          break;
+        input[i] = 3;
+        break;
+        
       case 'd':
-          result.push(4);
-          break;
+        input[i] = 4;
+        break;
+        
       case 'e':
-          result.push(5);
-          break;
+        input[i] = 5;
+        break;
     }
   }
-  return result;
+  return input;
 }
 
 let input1 = ['a', 'b', 'c', 'a', 'c', 'a', 'c'];
