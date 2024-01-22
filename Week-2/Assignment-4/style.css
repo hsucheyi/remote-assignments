@@ -1,0 +1,133 @@
+@import url('https://fonts.googleapis.com/css2?family=Salsa&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  /* text style */
+  font-family: 'Salsa', 'Arial', sans-serif;
+  /* box-model */
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  /* background and color */
+  color: white;
+  /* text style */
+  text-decoration: none;
+}
+
+.main-header {
+  background-color: #ff6c0f;
+}
+
+.name {
+  margin: 0;
+}
+
+.name a,
+.main-nav a {
+  /* text style */
+  text-align: center;
+  /* box-model */
+  display: block;
+  padding: 10px 15px;
+}
+
+.main-nav {
+  margin: 0;
+  padding: 0;
+}
+
+.main-nav li {
+  list-style: none;
+}
+
+.welcome {
+  /* background and color */
+  background-color: #d6d6d6;
+  /* text style */
+  text-align: center;
+  /* box-model */
+  height: 200px;
+  padding: 20px;
+  /* flexbox */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.content {
+  /* text style */
+  text-align: center;
+  /* box-model */
+  padding: 20px;
+}
+
+.flex-container, .hide-container {
+  /* box-model */
+  /* Total width of content boxes should be fixed in 1200px when screen width > 1200px */
+  max-width: 1200px;
+  margin: 0 auto;
+  /* flexbox */
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.flex-item {
+  /* background and color */
+  background-color: #ff6c0f;
+  color: white;
+  /* text style */
+  text-align: center;
+  /* box-model */
+  margin: 1%;
+  padding: 10px;
+  /* flexbox */
+  flex: 1 46%; /* (100%-1%*2-1%*2)/2 */
+}
+
+.flex-item ul li {
+  text-align: left;
+}
+
+footer {
+  /* background and color */
+  background-color: white;
+  /* text style */
+  text-align: center;
+  /* box-model */
+  padding: 10px 20px;
+}
+
+#readMore {
+  /* background and color */
+  background-color: black;
+  color: white;
+  /* text style */
+  font-weight: bold;
+  /* box-model */
+  border-radius: 5px;
+  padding: 10px;
+  display: inline-block;
+}
+
+@media (min-width: 769px) {
+  .main-header, .main-nav {
+    display: flex;
+  }
+  .main-header {
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+@media (min-width: 1025px) {
+  .main-header {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
