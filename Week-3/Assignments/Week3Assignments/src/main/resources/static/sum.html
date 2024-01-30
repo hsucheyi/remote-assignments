@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+<body>
+
+  <input type="text" id="numberInput">
+  <button onclick="calculateSum()">SUM</button>
+
+  <div id="result"></div>
+
+  <script>
+    function calculateSum() {
+      var number = document.getElementById("numberInput").value;
+      var xhr = new XMLHttpRequest();
+
+      xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4) {
+          if (xhr.status === 200) {
+            document.getElementById("result").innerHTML = xhr.responseText;
+          } 
+        }
+      };
+      xhr.open('GET', `http://localhost:3000/data?number=${number}`, true);
+      xhr.send();
+    }
+  </script>
+  <script src="app.js"></script>
+</body>
+</html>
