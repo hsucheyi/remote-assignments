@@ -8,8 +8,8 @@ import org.springframework.context.annotation.ComponentScan;
 @ComponentScan("cc.openhome")
 public class Week3AssignmentsApplication {
 
-    public static void main(String[] args) {
-        SpringApplication.run(Week3AssignmentsApplication.class, args);
-    }
-    
+	public static void main(String[] args) {
+		SpringApplication.run(Week3AssignmentsApplication.class, args);
+	}
+
 }

@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class Assignment1 {
 
 	@GetMapping("/")
-    public String hello() {
-        return "Hello, My Server!";
-    }
+	public String hello() {
+		return "Hello, My Server!";
+	}
 }
