@@ -12,8 +12,8 @@
 
   <script>
     function calculateSum() {
-      var number = document.getElementById("numberInput").value;
-      var xhr = new XMLHttpRequest();
+      let number = document.getElementById("numberInput").value;
+      const xhr = new XMLHttpRequest();
 
       xhr.onreadystatechange = function() {
         if (xhr.readyState === 4) {
