@@ -1,0 +1,81 @@
+<!doctype html>
+<html>
+  <head>
+    <style>
+      .hidden {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <button id="signUpBtn" onclick="showSignUpForm()">Sign Up</button>
+    <button id="signInBtn" onclick="showSignInForm()">Sign In</button>
+
+    <div id="signUpForm" class="hidden">
+      <h2>Sign Up</h2>
+      <form action="/signup" method="post">
+        <label>Email:</label>
+        <input type="email" name="email" id="emailSignUp" required /><br />
+
+        <label>Password:</label>
+        <input
+          type="password"
+          name="password"
+          id="passwordSignUp"
+          required
+        /><br />
+
+        <input type="submit" />
+      </form>
+    </div>
+
+    <div id="signInForm" class="hidden">
+      <h2>Sign In</h2>
+      <form action="/signin" method="post">
+        <label>Email:</label>
+        <input
+          type="email"
+          name="emailSignIn"
+          id="emailSignIn"
+          required
+        /><br />
+
+        <label>Password:</label>
+        <input
+          type="password"
+          name="passwordSignIn"
+          id="passwordSignIn"
+          required
+        /><br />
+
+        <input type="submit" />
+      </form>
+    </div>
+
+    <div th:if="${emailExists}">
+      <p>EMAIL have been registered! Try again!</p>
+    </div>
+
+    <div th:if="${passwordIncorrect}">
+      <p>Password incorrect! Try again!</p>
+    </div>
+
+    <div th:if="${emailNotRegistered}">
+      <p>EMAIL have not been registered! Please sign up first!</p>
+    </div>
+
+    <script>
+      function showSignUpForm() {
+        document.getElementById("signUpBtn").style.display = "none";
+        document.getElementById("signInBtn").style.display = "none";
+        document.getElementById("signUpForm").style.display = "block";
+      }
+
+      function showSignInForm() {
+        document.getElementById("signUpBtn").style.display = "none";
+        document.getElementById("signInBtn").style.display = "none";
+        document.getElementById("signInForm").style.display = "block";
+      }
+    </script>
+  </body>
+</html>
