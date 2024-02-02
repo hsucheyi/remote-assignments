@@ -4,6 +4,6 @@
 
 </head>
 <body>
-    <h1>Hello, <span th:if="${not #strings.isEmpty(userName)}" th:text="${userName}" th:unless="${#strings.isEmpty(userName)}">Guest</span>!</h1>
+    <h1>Hello, <span th:text="${userName} ?: 'Guest'">Guest</span>!</h1>
 </body>
 </html>

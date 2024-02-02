@@ -1,27 +1,25 @@
 package cc.openhome;
 
-import org.springframework.http.HttpHeaders;
+import java.net.URLDecoder;
+import java.nio.charset.StandardCharsets;
+import java.net.URLEncoder;
+import javax.servlet.http.Cookie;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-import java.net.URLEncoder;
-import java.nio.charset.StandardCharsets;
-
-import javax.servlet.http.Cookie;
+import org.springframework.http.HttpHeaders;
 
 @Controller
 public class Assignment4 {
 
-	@ModelAttribute
-	public void addAttributes(Model model, @CookieValue(value = "userName", defaultValue = "") String userName) {
-		model.addAttribute("userName", userName);
-	}
-
 	@GetMapping("/myName")
-	public String getMyNamePage(@ModelAttribute("userName") String userName) {
+	public String myName(@CookieValue(name = "userName", defaultValue = "") String encodedUserName, Model model) {
+		String userName = URLDecoder.decode(encodedUserName, StandardCharsets.UTF_8);
+
 		if (!userName.isEmpty()) {
+			model.addAttribute("userName", userName);
 			return "myName";
 		} else {
 			return "nameForm";
@@ -30,11 +28,12 @@ public class Assignment4 {
 
 	@PostMapping("/trackName")
 	public ResponseEntity<String> trackName(@RequestParam String name) {
-		Cookie cookie = new Cookie("userName", name);
-		cookie.setMaxAge(3600);
-
+		String encodedName = URLEncoder.encode(name, StandardCharsets.UTF_8);
+		Cookie cookie = new Cookie("userName", encodedName);
 		HttpHeaders headers = new HttpHeaders();
-		headers.add("Set-Cookie", cookie.getName() + "=" + URLEncoder.encode(cookie.getValue(), StandardCharsets.UTF_8) + "; Max-Age=" + cookie.getMaxAge());
+
+		headers.add("Set-Cookie", cookie.getName() + "=" + cookie.getValue());
 		return ResponseEntity.status(302).headers(headers).header("Location", "/myName").body("Redirecting to /myName");
 	}
+
 }
